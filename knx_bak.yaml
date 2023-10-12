@@ -1,0 +1,186 @@
+light:
+  #玄关灯
+  - name: "hallway"
+    address: "2/1/1"
+    state_address: "2/1/2"
+  #玄关柜灯
+  - name: "hallway cabinet light"
+    address: "2/1/3"
+    state_address: "2/1/4"
+  #餐厅射灯
+  - name: "Restaurant spotlights"
+    address: "2/1/5"
+    state_address: "2/1/6"
+  #餐厅吊灯
+  - name: "Restaurant chandelier"
+    address: "2/1/7"
+    state_address: "2/1/8"
+  #客厅主灯
+  - name: "Living room main light"
+    address: "2/1/9"
+    state_address: "2/1/10"
+  #客厅电视背景灯带
+  - name: "tv background light strip"
+    address: "2/1/13"
+    state_address: "2/1/14"
+  #阳台灯
+  - name: "balcony light"
+    address: "2/1/15"
+    state_address: "2/1/16"
+  #客厅筒灯
+  - name: "living room downlight"
+    address: "2/1/17"
+    state_address: "2/1/18"
+  #客厅天花灯带
+  - name: "Living room ceiling light strip"
+    address: "2/1/19"
+    state_address: "2/1/20"
+  #走道射灯
+  - name: "Walkway spotlights"
+    address: "2/1/21"
+    state_address: "2/1/22"
+  #客厅中间射灯sw
+  - name: "Living room center spotlight"
+    address: "2/1/23"
+    state_address: "2/1/24"
+  #书房灯
+  - name: "study lamp"
+    address: "2/2/1"
+    state_address: "2/2/2"
+  #厨房筒灯
+  - name: "kitchen downlight"
+    address: "2/3/1"
+    state_address: "2/3/2"
+  #厨房条形灯
+  - name: "kitchen strip light"
+    address: "2/3/3"
+    state_address: "2/3/4"
+  #公卫筒灯
+  - name: "Public health downlight"
+    address: "2/4/1"
+    state_address: "2/4/2"
+  #公卫浴室筒灯
+  - name: "Public bathroom downlight"
+    address: "2/4/3"
+    state_address: "2/4/4"
+  #公卫镜前灯带
+  - name: "Public health mirror headlight strip"
+    address: "2/4/5"
+    state_address: "2/4/6"
+  #长辈房主灯
+  - name: "Elderly room lamp"
+    address: "2/5/1"
+    state_address: "2/4/2"
+  #长辈房筒灯
+  - name: "Elderly room downlight"
+    address: "2/5/3"
+    state_address: "2/5/4"
+  #儿童房主灯
+  - name: "Children's house lamp"
+    address: "2/6/1"
+    state_address: "2/6/2"
+  #儿童房筒灯
+  - name: "children's room downlight"
+    address: "2/6/3"
+    state_address: "2/6/4"
+  #主卧主灯
+  - name: "Master bedroom main light"
+    address: "2/7/1"
+    state_address: "2/7/2"
+  #主卧床前灯
+  - name: "Master bedroom bed headlight"
+    address: "2/7/3"
+    state_address: "2/7/4"
+  #主卧床头灯
+  - name: "Master bedroom bedside lamp"
+    address: "2/7/5"
+    state_address: "2/7/6"
+  #主卧灯带
+  - name: "Master bedroom light strip"
+    address: "2/7/7"
+    state_address: "2/7/8"
+  #主卧玄关射灯
+  - name: "Master bedroom entrance spotlight"
+    address: "2/7/9"
+    state_address: "2/7/10"
+  #主卫筒灯H1
+  - name: "Main bathroom downlight H1"
+    address: "2/7/11"
+    state_address: "2/7/12"
+  #主卫淋浴筒灯H2
+  - name: "Master bathroom shower downlight H2"
+    address: "2/7/13"
+    state_address: "2/7/14"
+  #主卫灯带
+  - name: "Main bathroom light strip"
+    address: "2/7/15"
+    state_address: "2/7/16"
+switch:
+  #餐厅纱帘
+  - name: "Restaurant gauze curtain"
+    address: "2/1/53"
+  #餐厅布帘开关
+  - name: "Restaurant curtain"
+    address: "2/1/51"
+  #客厅布帘开关
+  - name: "living room curtains"
+    address: "2/1/55"
+  #客厅纱帘开关
+  - name: "living room gauze curtain"
+    address: "2/1/57"
+  #长辈房布帘开关
+  - name: "Elderly room curtains"
+    address: "2/5/51"
+  #长辈房纱帘开关
+  - name: "gauze curtain for elders room"
+    address: "2/5/53"
+  #儿童房布帘
+  - name: "children's room curtain"
+    address: "2/6/51"
+  #儿童房纱帘
+  - name: "Children's room gauze curtain"
+    address: "2/6/53"
+  #主卧布帘开关
+  - name: "Master bedroom curtains"
+    address: "2/7/51"
+  #主卧纱帘开关
+  - name: "Master bedroom gauze curtain"
+    address: "2/7/53"
+  #儿童房空调开关sw
+  - name: "儿童房空调开关"
+    address: "12/1/4"
+    state_address: "11/1/4"
+  #长辈房空调开关sw
+  - name: "长辈房空调开关"
+    address: "12/1/2"
+    state_address: "11/1/2"
+  #客厅空调开关
+  - name: "客厅空调开关"
+    address: "12/1/5"
+    state_address: "11/1/5"
+  #书房空调开关sw
+  - name: "书房空调开关"
+    address: "12/1/1"
+    state_address: "11/1/1"
+  #厨房空调开关sw
+  - name: "厨房空调开关"
+    address: "12/1/6"
+    state_address: "11/1/6"
+  #主卧空调开关sw
+  - name: "主卧空调开关"
+    address: "12/1/3"
+    state_address: "11/1/3"
+scene:
+  - name: "离家"
+    address: 10/1/101
+    scene_number: 0x11
+  - name: "公区全关"
+    address: 10/1/101
+    scene_number: 0x01
+  - name: "会客"
+    address: 10/1/101
+    scene_number: 0x02
+  # 只打开了餐厅筒灯  
+  - name: "备餐"
+    address: 10/1/101
+    scene_number: 0x03

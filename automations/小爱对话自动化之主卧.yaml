@@ -1,0 +1,249 @@
+alias: 小爱对话自动化之主卧
+description: 关键词匹配和小爱对话内容并操作对应的设备
+trigger:
+  - platform: state
+    entity_id: sensor.xiaomi_l05c_4da7_conversation
+condition:
+  - condition: template
+    value_template: |
+      {{ (trigger.to_state|default(0)) and as_timestamp(now()) -
+      as_timestamp(trigger.to_state.attributes.timestamp) < 60 }}
+      {# 限制60秒内的对话 #}
+action:
+  - choose:
+      - conditions:
+          - condition: template
+            value_template: |
+              {{ '打开主灯' in trigger.to_state.state }}
+        sequence:
+          - service: light.turn_on
+            target:
+              entity_id: light.master_bedroom_main_light
+            data: {}
+      - conditions:
+          - condition: template
+            value_template: |
+              {{ '关闭主灯' in trigger.to_state.state }}
+        sequence:
+          - service: light.turn_off
+            target:
+              entity_id: light.master_bedroom_main_light
+            data: {}
+      - conditions:
+          - condition: template
+            value_template: |
+              {{ '打开射灯' in trigger.to_state.state }}
+        sequence:
+          - service: light.turn_on
+            target:
+              entity_id: light.master_bedroom_bed_headlight
+            data: {}
+      - conditions:
+          - condition: template
+            value_template: |
+              {{ '关闭射灯' in trigger.to_state.state }}
+        sequence:
+          - service: light.turn_off
+            target:
+              entity_id: light.master_bedroom_bed_headlight
+            data: {}
+      - conditions:
+          - condition: template
+            value_template: |
+              {{ '打开床头灯' in trigger.to_state.state }}
+        sequence:
+          - service: light.turn_on
+            target:
+              entity_id: light.master_bedroom_bedside_lamp
+            data: {}
+      - conditions:
+          - condition: template
+            value_template: |
+              {{ '关闭床头灯' in trigger.to_state.state }}
+        sequence:
+          - service: light.turn_off
+            target:
+              entity_id: light.master_bedroom_bedside_lamp
+            data: {}
+      - conditions:
+          - condition: template
+            value_template: |
+              {{ '打开主卧灯带' in trigger.to_state.state }}
+        sequence:
+          - service: light.turn_on
+            target:
+              entity_id: light.master_bedroom_light_strip
+            data: {}
+      - conditions:
+          - condition: template
+            value_template: |
+              {{ '关闭主卧灯带' in trigger.to_state.state }}
+        sequence:
+          - service: light.turn_off
+            target:
+              entity_id: light.master_bedroom_light_strip
+            data: {}
+      - conditions:
+          - condition: template
+            value_template: |
+              {{ '打开衣帽间灯' in trigger.to_state.state }}
+        sequence:
+          - service: light.turn_on
+            target:
+              entity_id: light.master_bedroom_entrance_spotlight
+            data: {}
+      - conditions:
+          - condition: template
+            value_template: |
+              {{ '关闭衣帽间灯' in trigger.to_state.state }}
+        sequence:
+          - service: light.turn_off
+            target:
+              entity_id: light.master_bedroom_entrance_spotlight
+            data: {}
+      - conditions:
+          - condition: template
+            value_template: |
+              {{ '打开主卧空调' in trigger.to_state.state }}
+        sequence:
+          - service: switch.turn_on
+            target:
+              entity_id: switch.zhu_wo_kong_diao_kai_guan
+            data: {}
+      - conditions:
+          - condition: template
+            value_template: |
+              {{ '关闭主卧空调' in trigger.to_state.state }}
+        sequence:
+          - service: switch.turn_off
+            target:
+              entity_id: switch.zhu_wo_kong_diao_kai_guan
+            data: {}
+      - conditions:
+          - condition: template
+            value_template: |
+              {{ '打开空调' in trigger.to_state.state }}
+        sequence:
+          - service: switch.turn_on
+            target:
+              entity_id: switch.zhu_wo_kong_diao_kai_guan
+            data: {}
+      - conditions:
+          - condition: template
+            value_template: |
+              {{ '关闭空调' in trigger.to_state.state }}
+        sequence:
+          - service: switch.turn_off
+            target:
+              entity_id: switch.zhu_wo_kong_diao_kai_guan
+            data: {}
+      - conditions:
+          - condition: template
+            value_template: |
+              {{ '打开纱帘' in trigger.to_state.state }}
+        sequence:
+          - service: switch.turn_off
+            target:
+              entity_id: switch.master_bedroom_gauze_curtain
+            data: {}
+      - conditions:
+          - condition: template
+            value_template: |
+              {{ '关闭纱帘' in trigger.to_state.state }}
+        sequence:
+          - service: switch.turn_on
+            target:
+              entity_id: switch.master_bedroom_gauze_curtain
+            data: {}
+      - conditions:
+          - condition: template
+            value_template: |
+              {{ '打开窗纱' in trigger.to_state.state }}
+        sequence:
+          - service: switch.turn_off
+            target:
+              entity_id: switch.master_bedroom_gauze_curtain
+            data: {}
+      - conditions:
+          - condition: template
+            value_template: |
+              {{ '关闭窗纱' in trigger.to_state.state }}
+        sequence:
+          - service: switch.turn_on
+            target:
+              entity_id: switch.master_bedroom_gauze_curtain
+            data: {}
+      - conditions:
+          - condition: template
+            value_template: |
+              {{ '打开布帘' in trigger.to_state.state }}
+        sequence:
+          - service: switch.turn_off
+            target:
+              entity_id: switch.master_bedroom_curtains
+            data: {}
+      - conditions:
+          - condition: template
+            value_template: |
+              {{ '关闭布帘' in trigger.to_state.state }}
+        sequence:
+          - service: switch.turn_on
+            target:
+              entity_id: switch.master_bedroom_curtains
+            data: {}
+      - conditions:
+          - condition: template
+            value_template: "{{ '主卫全开' in trigger.to_state.state }}"
+        sequence:
+          - service: scene.turn_on
+            data: {}
+            target:
+              entity_id: scene.zhu_wei_quan_kai
+      - conditions:
+          - condition: template
+            value_template: "{{ '主卫全关' in trigger.to_state.state }}"
+        sequence:
+          - service: scene.turn_on
+            data: {}
+            target:
+              entity_id: scene.zhu_wei_quan_guan
+      - conditions:
+          - condition: template
+            value_template: "{{ '准备睡觉' in trigger.to_state.state }}"
+        sequence:
+          - service: scene.turn_on
+            data: {}
+            target:
+              entity_id: scene.zhu_wo_yu_shui_jue
+      - conditions:
+          - condition: template
+            value_template: "{{ '晚安' in trigger.to_state.state }}"
+        sequence:
+          - service: scene.turn_on
+            data: {}
+            target:
+              entity_id: scene.shui_jue
+      - conditions:
+          - condition: template
+            value_template: "{{ '起床' in trigger.to_state.state }}"
+        sequence:
+          - service: scene.turn_on
+            data: {}
+            target:
+              entity_id: scene.zhu_wo_qi_chuang
+      - conditions:
+          - condition: template
+            value_template: "{{ '准备起床' in trigger.to_state.state }}"
+        sequence:
+          - service: scene.turn_on
+            data: {}
+            target:
+              entity_id: scene.zhu_wo_yu_qi_chuang
+    default: []
+  - service: system_log.write
+    data:
+      level: info
+      logger: custom_components.xiaomi_miot.xiaoai
+      message: |
+        {{ trigger.entity_id }}: {{ trigger.to_state.state }}
+mode: single
