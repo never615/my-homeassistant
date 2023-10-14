@@ -447,14 +447,6 @@ action:
             data: {}
             target:
               entity_id: scene.gong_qu_deng_quan_guan
-      - conditions:
-          - condition: template
-            value_template: "{{ '晚安' in trigger.to_state.state }}"
-        sequence:
-          - service: scene.turn_on
-            data: {}
-            target:
-              entity_id: scene.guan_bi_can_ting_deng
     default: []
   - service: system_log.write
     data:
