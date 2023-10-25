@@ -14,24 +14,6 @@ action:
       - conditions:
           - condition: template
             value_template: |
-              {{ '开灯' in trigger.to_state.state }}
-        sequence:
-          - service: light.turn_on
-            target:
-              entity_id: light.study
-            data: {}
-      - conditions:
-          - condition: template
-            value_template: |
-              {{ '关灯' in trigger.to_state.state }}
-        sequence:
-          - service: light.turn_off
-            target:
-              entity_id: light.study
-            data: {}
-      - conditions:
-          - condition: template
-            value_template: |
               {{ '打开书房灯' in trigger.to_state.state }}
         sequence:
           - service: light.turn_on
@@ -46,6 +28,24 @@ action:
           - service: light.turn_off
             target:
               entity_id: light.study
+            data: {}
+      - conditions:
+          - condition: template
+            value_template: |
+              {{ '打开玄关灯' in trigger.to_state.state }}
+        sequence:
+          - service: light.turn_on
+            target:
+              entity_id: light.hallway
+            data: {}
+      - conditions:
+          - condition: template
+            value_template: |
+              {{ '关闭玄关灯' in trigger.to_state.state }}
+        sequence:
+          - service: light.turn_off
+            target:
+              entity_id: light.hallway
             data: {}
       - conditions:
           - condition: template
