@@ -385,7 +385,7 @@ action:
               entity_id: switch.restaurant_curtain
       - conditions:
           - condition: template
-            value_template: "{{ '观影' == trigger.to_state.state }}"
+            value_template: "{{ '观影模式' == trigger.to_state.state }}"
         sequence:
           - service: scene.turn_on
             data: {}
@@ -455,10 +455,12 @@ action:
             data: {}
             target:
               entity_id: scene.guan_bi_can_ting_deng
-          - service: light.off
+          - service: light.turn_off
             data: {}
             target:
               entity_id: light.study
+          - service: script.1698163602021
+            data: {}
       - conditions:
           - condition: template
             value_template: "{{ '次卫全开' in trigger.to_state.state }}"
