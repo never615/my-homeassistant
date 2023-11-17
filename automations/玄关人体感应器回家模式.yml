@@ -44,4 +44,8 @@ action:
     target:
       entity_id: scene.hui_jia
     metadata: {}
+  - service: scene.turn_on
+    target:
+      entity_id: scene.zai_jia_mo_shi
+    metadata: {}
 mode: single
