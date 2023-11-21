@@ -16,10 +16,10 @@ action:
             value_template: |
               {{ '离家模式' in trigger.to_state.state }}
         sequence:
-          - service: sence.turn_on
+          - service: scene.turn_on
+            data: {}
             target:
               entity_id: scene.chi_jia_zhong_zhi
-            data: {}
       - conditions:
           - condition: template
             value_template: |
