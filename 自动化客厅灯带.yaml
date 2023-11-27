@@ -1,0 +1,23 @@
+alias: 自动化客厅灯带
+description: ""
+trigger:
+  - platform: state
+    entity_id:
+      - sensor.xiaomi_lx06_b297_conversation
+condition:
+  - condition: template
+    value_template: |
+      {{ (trigger.to_state|default(0)) and as_timestamp(now()) -
+      as_timestamp(trigger.to_state.attributes.timestamp) < 60 }}
+      {# 限制60秒内的对话 #}
+  - condition: template
+    value_template: "{{ '自动化客厅灯带' in trigger.to_state.state }}"
+  - condition: state
+    entity_id: light.living_room_ceiling_light_strip
+    state: "off"
+action:
+  - service: light.turn_on
+    data: {}
+    target:
+      entity_id: light.living_room_ceiling_light_strip
+mode: single

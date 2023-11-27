@@ -222,7 +222,11 @@ action:
           - service: scene.turn_on
             data: {}
             target:
-              entity_id: scene.shui_jue
+              entity_id: scene.ke_ting_wan_an
+          - service: scene.turn_on
+            data: {}
+            target:
+              entity_id: scene.shui_jue_kai_chuang_lian_tong_qi              
       - conditions:
           - condition: template
             value_template: "{{ '起床' in trigger.to_state.state }}"
