@@ -489,6 +489,8 @@ action:
             data: {}
             target:
               entity_id: scene.ke_ting_wan_an
+          - service: script.1698163602021
+            data: {}
       - conditions:
           - condition: template
             value_template: "{{ '次卫全开' in trigger.to_state.state }}"
