@@ -19,7 +19,7 @@ action:
           - service: light.turn_on
             target:
               entity_id:
-                - light.study_lamp
+                - light.study
             data: {}
       - conditions:
           - condition: template
@@ -29,7 +29,7 @@ action:
           - service: light.turn_off
             data: {}
             target:
-              entity_id: light.study_lamp
+              entity_id: light.study
       - conditions:
           - condition: template
             value_template: |
@@ -66,6 +66,38 @@ action:
             target:
               entity_id: switch.shu_fang_kong_diao_kai_guan
             data: {}
+      - conditions:
+          - condition: template
+            value_template: "{{ '主卫全开' in trigger.to_state.state }}"
+        sequence:
+          - service: scene.turn_on
+            data: {}
+            target:
+              entity_id: scene.zhu_wei_quan_kai
+      - conditions:
+          - condition: template
+            value_template: "{{ '主卫全关' in trigger.to_state.state }}"
+        sequence:
+          - service: scene.turn_on
+            data: {}
+            target:
+              entity_id: scene.zhu_wei_quan_guan
+      - conditions:
+          - condition: template
+            value_template: "{{ '关闭主卫筒灯' in trigger.to_state.state }}"
+        sequence:
+          - service: light.turn_off
+            data: {}
+            target:
+              entity_id: light.main_bathroom_downlight_h1
+      - conditions:
+          - condition: template
+            value_template: "{{ '关闭主卫灯带' in trigger.to_state.state }}"
+        sequence:
+          - service: light.turn_off
+            data: {}
+            target:
+              entity_id: light.main_bathroom_light_strip
     default: []
   - service: system_log.write
     data:

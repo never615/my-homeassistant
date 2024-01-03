@@ -38,6 +38,24 @@ action:
             target:
               entity_id: light.hallway
             data: {}
+      - conditions:
+          - condition: template
+            value_template: |
+              {{ '打开儿童房主灯' in trigger.to_state.state }}
+        sequence:
+          - service: light.turn_on
+            target:
+              entity_id: light.children_s_house_lamp
+            data: {}
+      - conditions:
+          - condition: template
+            value_template: |
+              {{ '关闭儿童房主灯' in trigger.to_state.state }}
+        sequence:
+          - service: light.turn_off
+            target:
+              entity_id: light.children_s_house_lamp
+            data: {}
     default: []
   - service: system_log.write
     data:

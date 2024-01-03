@@ -55,10 +55,6 @@ light:
   - name: "kitchen strip light"
     address: "2/3/3"
     state_address: "2/3/4"
-  #公卫面板全开全关 2/4/100 GroupValueWrite 0x00 0x01
-  - name: "公卫面板全开全开"
-    address: "2/4/100"
-    payload: 0x00
   #公卫筒灯
   - name: "Public health downlight"
     address: "2/4/1"
@@ -174,17 +170,37 @@ switch:
   - name: "主卧空调开关"
     address: "12/1/3"
     state_address: "11/1/3"
-scene:
-  - name: "离家"
-    address: 10/1/101
-    scene_number: 0x11
-  - name: "公区全关"
-    address: 10/1/101
-    scene_number: 0x01
-  - name: "会客"
-    address: 10/1/101
-    scene_number: 0x02
-  # 只打开了餐厅筒灯
-  - name: "备餐"
-    address: 10/1/101
-    scene_number: 0x03
+button:
+  - name: "公卫面板全开"
+    address: "2/4/100"
+    payload: 0x00
+  - name: "公卫面板全关"
+    address: "2/4/100"
+    payload: 0x01
+  - name: "主卫面板全开"
+    address: "2/7/99"
+    payload: 0x00
+  - name: "主卫面板全关"
+    address: "2/7/99"
+    payload: 0x01
+  - name: "主卧面板全开"
+    address: "2/7/100"
+    payload: 0x00
+  - name: "主卧面板全关"
+    address: "2/7/100"
+    payload: 0x01
+  - name: "儿童房面板全开"
+    address: "2/6/100"
+    payload: 0x00
+  - name: "儿童房面板全关"
+    address: "2/6/100"
+    payload: 0x01
+  - name: "长辈房面板全开"
+    address: "2/5/100"
+    payload: 0x00
+  - name: "长辈房面板全关"
+    address: "2/5/100"
+    payload: 0x01
+event:
+  - address:
+      - "*"

@@ -15,6 +15,15 @@ condition:
   - condition: state
     entity_id: light.living_room_downlight
     state: "off"
+  - condition: state
+    entity_id: light.living_room_main_light
+    state: "off"
+  - condition: state
+    entity_id: light.living_room_ceiling_light_strip
+    state: "off"
+  - condition: state
+    entity_id: input_boolean.guan_ying_mo_shi_zhuang_tai
+    state: "off"
 action:
   - service: light.turn_on
     data: {}

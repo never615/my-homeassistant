@@ -1,0 +1,14 @@
+alias: knx离家
+description: ""
+trigger:
+  - platform: event
+    event_type: knx_event
+    event_data:
+      destination: 10/1/101
+condition: []
+action:
+  - service: scene.turn_on
+    data: {}
+    target:
+      entity_id: scene.chi_jia_zhong_zhi
+mode: single

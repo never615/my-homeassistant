@@ -16,12 +16,6 @@ condition:
   - condition: state
     entity_id: light.restaurant_spotlights
     state: "off"
-  - type: is_illuminance
-    condition: device
-    device_id: 6b280725e92f22ff0fe75b08e3e25d52
-    entity_id: 00af62da98180d814082de1fff33d1fe
-    domain: sensor
-    below: 50
   - condition: state
     entity_id: light.living_room_center_spotlight
     state: "off"

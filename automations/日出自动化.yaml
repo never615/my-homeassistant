@@ -1,0 +1,37 @@
+alias: 日出窗帘自动化
+description: ""
+trigger:
+  - platform: sun
+    event: sunrise
+    offset: 0
+condition: []
+action:
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.master_bedroom_curtains
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.restaurant_curtain
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.living_room_curtains
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.children_s_room_gauze_curtain
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.gauze_curtain_for_elders_room
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.living_room_gauze_curtain
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.restaurant_gauze_curtain
+mode: single

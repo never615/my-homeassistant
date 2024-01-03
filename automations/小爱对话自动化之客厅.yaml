@@ -431,8 +431,6 @@ action:
             data: {}
             target:
               entity_id: scene.guan_ying
-          - service: script.1698163911230
-            data: {}
       - conditions:
           - condition: template
             value_template: "{{ '结束观影' == trigger.to_state.state }}"
