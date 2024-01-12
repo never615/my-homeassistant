@@ -10,9 +10,20 @@ script: !include scripts.yaml
 scene: !include scenes.yaml
 knx: !include knx.yaml
 
+binary_sensor:
+  - platform: ping
+    name: tv
+    count: 2
+    scan_interval: 5
+    host: 192.168.31.22
+
+
 homeassistant:
   customize: !include customize.yaml
   customize_glob:
     # 修改所有小爱的对话实体
     "sensor.xiaomi_*_conversation":
-      interval_seconds: 3 # 默认5秒
+      interval_seconds: 1 # 默认5秒
+~
+~
+~
