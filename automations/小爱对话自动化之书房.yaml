@@ -2,7 +2,7 @@ alias: 小爱对话自动化之书房
 description: 关键词匹配和小爱对话内容并操作对应的设备
 trigger:
   - platform: state
-    entity_id: sensor.xiaomi_lx06_b297_conversation
+    entity_id: sensor.xiaomi_s12_e74f_conversation
 condition:
   - condition: template
     value_template: |
@@ -11,6 +11,33 @@ condition:
       {# 限制60秒内的对话 #}
 action:
   - choose:
+      - conditions:
+          - condition: template
+            value_template: |
+              {{ '离家模式' in trigger.to_state.state }}
+        sequence:
+          - service: scene.turn_on
+            data: {}
+            target:
+              entity_id: scene.chi_jia_zhong_zhi
+      - conditions:
+          - condition: template
+            value_template: |
+              {{ '打开玄关灯' in trigger.to_state.state }}
+        sequence:
+          - service: light.turn_on
+            target:
+              entity_id: light.hallway
+            data: {}
+      - conditions:
+          - condition: template
+            value_template: |
+              {{ '关闭玄关灯' in trigger.to_state.state }}
+        sequence:
+          - service: light.turn_off
+            target:
+              entity_id: light.hallway
+            data: {}
       - conditions:
           - condition: template
             value_template: |
@@ -66,38 +93,6 @@ action:
             target:
               entity_id: switch.shu_fang_kong_diao_kai_guan
             data: {}
-      - conditions:
-          - condition: template
-            value_template: "{{ '主卫全开' in trigger.to_state.state }}"
-        sequence:
-          - service: scene.turn_on
-            data: {}
-            target:
-              entity_id: scene.zhu_wei_quan_kai
-      - conditions:
-          - condition: template
-            value_template: "{{ '主卫全关' in trigger.to_state.state }}"
-        sequence:
-          - service: scene.turn_on
-            data: {}
-            target:
-              entity_id: scene.zhu_wei_quan_guan
-      - conditions:
-          - condition: template
-            value_template: "{{ '关闭主卫筒灯' in trigger.to_state.state }}"
-        sequence:
-          - service: light.turn_off
-            data: {}
-            target:
-              entity_id: light.main_bathroom_downlight_h1
-      - conditions:
-          - condition: template
-            value_template: "{{ '关闭主卫灯带' in trigger.to_state.state }}"
-        sequence:
-          - service: light.turn_off
-            data: {}
-            target:
-              entity_id: light.main_bathroom_light_strip
     default: []
   - service: system_log.write
     data:

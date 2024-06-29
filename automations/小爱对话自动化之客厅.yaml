@@ -2,7 +2,7 @@ alias: 小爱对话自动化之客厅
 description: 关键词匹配和小爱对话内容并操作对应的设备
 trigger:
   - platform: state
-    entity_id: sensor.xiaomi_l05c_0cb3_conversation
+    entity_id: sensor.xiaomi_lx06_b297_conversation
 condition:
   - condition: template
     value_template: |
@@ -330,6 +330,24 @@ action:
           - condition: template
             value_template: |
               {{ '关闭客厅空调' in trigger.to_state.state }}
+        sequence:
+          - service: switch.turn_off
+            target:
+              entity_id: switch.ke_ting_kong_diao_kai_guan
+            data: {}
+      - conditions:
+          - condition: template
+            value_template: |
+              {{ '打开空调' in trigger.to_state.state }}
+        sequence:
+          - service: switch.turn_on
+            target:
+              entity_id: switch.ke_ting_kong_diao_kai_guan
+            data: {}
+      - conditions:
+          - condition: template
+            value_template: |
+              {{ '关闭空调' in trigger.to_state.state }}
         sequence:
           - service: switch.turn_off
             target:
