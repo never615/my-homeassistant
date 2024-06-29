@@ -122,24 +122,6 @@ action:
       - conditions:
           - condition: template
             value_template: |
-              {{ '打开空调' in trigger.to_state.state }}
-        sequence:
-          - service: switch.turn_on
-            target:
-              entity_id: switch.zhu_wo_kong_diao_kai_guan
-            data: {}
-      - conditions:
-          - condition: template
-            value_template: |
-              {{ '关闭空调' in trigger.to_state.state }}
-        sequence:
-          - service: switch.turn_off
-            target:
-              entity_id: switch.zhu_wo_kong_diao_kai_guan
-            data: {}
-      - conditions:
-          - condition: template
-            value_template: |
               {{ '打开纱帘' in trigger.to_state.state }}
         sequence:
           - service: switch.turn_off

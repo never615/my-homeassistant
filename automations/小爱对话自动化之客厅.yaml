@@ -68,24 +68,6 @@ action:
       - conditions:
           - condition: template
             value_template: |
-              {{ '打开厨房空调' in trigger.to_state.state }}
-        sequence:
-          - service: switch.turn_on
-            target:
-              entity_id: switch.chu_fang_kong_diao_kai_guan
-            data: {}
-      - conditions:
-          - condition: template
-            value_template: |
-              {{ '关闭厨房空调' in trigger.to_state.state }}
-        sequence:
-          - service: switch.turn_off
-            target:
-              entity_id: switch.chu_fang_kong_diao_kai_guan
-            data: {}
-      - conditions:
-          - condition: template
-            value_template: |
               {{ '打开餐厅吊灯' in trigger.to_state.state }}
         sequence:
           - service: light.turn_on
@@ -316,42 +298,6 @@ action:
           - service: switch.turn_on
             target:
               entity_id: switch.living_room_gauze_curtain
-            data: {}
-      - conditions:
-          - condition: template
-            value_template: |
-              {{ '打开客厅空调' in trigger.to_state.state }}
-        sequence:
-          - service: switch.turn_on
-            target:
-              entity_id: switch.ke_ting_kong_diao_kai_guan
-            data: {}
-      - conditions:
-          - condition: template
-            value_template: |
-              {{ '关闭客厅空调' in trigger.to_state.state }}
-        sequence:
-          - service: switch.turn_off
-            target:
-              entity_id: switch.ke_ting_kong_diao_kai_guan
-            data: {}
-      - conditions:
-          - condition: template
-            value_template: |
-              {{ '打开空调' in trigger.to_state.state }}
-        sequence:
-          - service: switch.turn_on
-            target:
-              entity_id: switch.ke_ting_kong_diao_kai_guan
-            data: {}
-      - conditions:
-          - condition: template
-            value_template: |
-              {{ '关闭空调' in trigger.to_state.state }}
-        sequence:
-          - service: switch.turn_off
-            target:
-              entity_id: switch.ke_ting_kong_diao_kai_guan
             data: {}
       - conditions:
           - condition: template
