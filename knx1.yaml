@@ -35,7 +35,7 @@ light:
   - name: "Living room ceiling light strip"
     address: "2/1/19"
     state_address: "2/1/20"
-  #走道灯
+  #走道射灯
   - name: "Walkway spotlights"
     address: "2/1/21"
     state_address: "2/1/22"
@@ -63,7 +63,7 @@ light:
   - name: "Public bathroom downlight"
     address: "2/4/3"
     state_address: "2/4/4"
-  #公卫灯带
+  #公卫镜前灯带
   - name: "Public health mirror headlight strip"
     address: "2/4/5"
     state_address: "2/4/6"
@@ -87,7 +87,7 @@ light:
   - name: "Master bedroom main light"
     address: "2/7/1"
     state_address: "2/7/2"
-  #主卧床尾灯
+  #主卧床前灯
   - name: "Master bedroom bed headlight"
     address: "2/7/3"
     state_address: "2/7/4"
@@ -99,7 +99,7 @@ light:
   - name: "Master bedroom light strip"
     address: "2/7/7"
     state_address: "2/7/8"
-  #衣帽间灯
+  #主卧玄关射灯
   - name: "Master bedroom entrance spotlight"
     address: "2/7/9"
     state_address: "2/7/10"
@@ -170,25 +170,6 @@ switch:
   - name: "主卧空调开关"
     address: "12/1/3"
     state_address: "11/1/3"
-button:
-  - name: "公卫面板全开"
+  - name: "公卫面板全开全开"
     address: "2/4/100"
-    payload: 0x00
-  - name: "公卫面板全关"
-    address: "2/4/100"
-    payload: 0x01
-  - name: "主卫面板全开"
-    address: "2/7/99"
-    payload: 0x00
-  - name: "主卫面板全关"
-    address: "2/7/99"
-    payload: 0x01
-  - name: "长辈房面板全开"
-    address: "2/5/100"
-    payload: 0x00
-  - name: "长辈房面板全关"
-    address: "2/5/100"
-    payload: 0x01
-event:
-  - address:
-      - "*"
+    payload: 0x00    
