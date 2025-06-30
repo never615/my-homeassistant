@@ -301,30 +301,6 @@ action:
             data: {}
       - conditions:
           - condition: template
-            value_template: "{{ '关闭纱帘' in trigger.to_state.state }}"
-        sequence:
-          - service: switch.turn_on
-            data: {}
-            target:
-              entity_id: switch.living_room_gauze_curtain
-          - service: switch.turn_on
-            data: {}
-            target:
-              entity_id: switch.restaurant_gauze_curtain
-      - conditions:
-          - condition: template
-            value_template: "{{ '打开纱帘' in trigger.to_state.state }}"
-        sequence:
-          - service: switch.turn_off
-            data: {}
-            target:
-              entity_id: switch.living_room_gauze_curtain
-          - service: switch.turn_off
-            data: {}
-            target:
-              entity_id: switch.restaurant_gauze_curtain
-      - conditions:
-          - condition: template
             value_template: "{{ '关闭布帘' in trigger.to_state.state }}"
         sequence:
           - service: switch.turn_on
@@ -405,6 +381,14 @@ action:
               entity_id: scene.can_ting_gong_zuo
       - conditions:
           - condition: template
+            value_template: "{{ '会客模式' in trigger.to_state.state }}"
+        sequence:
+          - service: scene.turn_on
+            data: {}
+            target:
+              entity_id: scene.hui_ke
+      - conditions:
+          - condition: template
             value_template: "{{ '晚安' in trigger.to_state.state }}"
         sequence:
           - service: scene.turn_on
@@ -413,6 +397,32 @@ action:
               entity_id: scene.ke_ting_wan_an
           - service: script.1698163602021
             data: {}
+      - conditions:
+          - condition: template
+            value_template: "{{ '关闭纱帘' in trigger.to_state.state }}"
+        sequence:
+          - if:
+              - condition: state
+                entity_id: switch.living_room_gauze_curtain
+                state: "on"
+            then:
+              - service: scene.turn_on
+                data: {}
+                target:
+                  entity_id: scene.guan_bi_ke_can_ting_sha_lian
+      - conditions:
+          - condition: template
+            value_template: "{{ '打开纱帘' in trigger.to_state.state }}"
+        sequence:
+          - if:
+              - condition: state
+                entity_id: switch.living_room_gauze_curtain
+                state: "off"
+            then:
+              - service: scene.turn_on
+                data: {}
+                target:
+                  entity_id: scene.da_kai_ke_can_ting_sha_lian
     default: []
   - service: system_log.write
     data:
