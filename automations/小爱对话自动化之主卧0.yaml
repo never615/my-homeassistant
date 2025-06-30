@@ -2,7 +2,7 @@ alias: 小爱对话自动化之主卧
 description: 关键词匹配和小爱对话内容并操作对应的设备
 mode: single
 triggers:
-  - entity_id: sensor.xiaomi_oh2_3d2b_conversation
+  - entity_id: sensor.xiaomi_s12_e74f_conversation
     trigger: state
 conditions:
   - condition: template
