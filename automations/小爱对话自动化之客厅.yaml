@@ -1,402 +1,370 @@
 alias: 小爱对话自动化之客厅
 description: 关键词匹配和小爱对话内容并操作对应的设备
-trigger:
-  - platform: state
-    entity_id: sensor.xiaomi_lx06_b297_conversation
-condition:
+triggers:
+  - entity_id: sensor.xiaomi_lx06_b297_conversation
+    trigger: state
+conditions:
   - condition: template
     value_template: |
       {{ (trigger.to_state|default(0)) and as_timestamp(now()) -
       as_timestamp(trigger.to_state.attributes.timestamp) < 60 }}
       {# 限制60秒内的对话 #}
-action:
+actions:
   - choose:
       - conditions:
           - condition: template
             value_template: |
               {{ '打开走道灯' in trigger.to_state.state }}
         sequence:
-          - service: light.turn_on
-            target:
+          - target:
               entity_id: light.walkway_spotlights
             data: {}
+            action: light.turn_on
       - conditions:
           - condition: template
             value_template: |
               {{ '关闭走道灯' in trigger.to_state.state }}
         sequence:
-          - service: light.turn_off
-            target:
+          - target:
               entity_id: light.walkway_spotlights
             data: {}
+            action: light.turn_off
       - conditions:
           - condition: template
             value_template: |
               {{ '打开厨房灯' in trigger.to_state.state }}
         sequence:
-          - service: light.turn_on
-            target:
+          - target:
               entity_id: light.kitchen_strip_light
             data: {}
+            action: light.turn_on
       - conditions:
           - condition: template
             value_template: |
               {{ '关闭厨房灯' in trigger.to_state.state }}
         sequence:
-          - service: light.turn_off
-            target:
+          - target:
               entity_id: light.kitchen_strip_light
             data: {}
+            action: light.turn_off
       - conditions:
           - condition: template
             value_template: |
               {{ '打开厨房筒灯' in trigger.to_state.state }}
         sequence:
-          - service: light.turn_on
-            target:
+          - target:
               entity_id: light.kitchen_downlight
             data: {}
+            action: light.turn_on
       - conditions:
           - condition: template
             value_template: |
               {{ '关闭厨房筒灯' in trigger.to_state.state }}
         sequence:
-          - service: light.turn_off
-            target:
+          - target:
               entity_id: light.kitchen_downlight
             data: {}
+            action: light.turn_off
       - conditions:
           - condition: template
             value_template: |
               {{ '打开餐厅吊灯' in trigger.to_state.state }}
         sequence:
-          - service: light.turn_on
-            target:
+          - target:
               entity_id: light.restaurant_chandelier
             data: {}
+            action: light.turn_on
       - conditions:
           - condition: template
             value_template: |
               {{ '关闭餐厅吊灯' in trigger.to_state.state }}
         sequence:
-          - service: light.turn_off
-            target:
+          - target:
               entity_id: light.restaurant_chandelier
             data: {}
+            action: light.turn_off
       - conditions:
           - condition: template
             value_template: |
               {{ '打开餐厅筒灯' in trigger.to_state.state }}
         sequence:
-          - service: light.turn_on
-            target:
+          - target:
               entity_id: light.restaurant_spotlights
             data: {}
+            action: light.turn_on
       - conditions:
           - condition: template
             value_template: |
               {{ '关闭餐厅筒灯' in trigger.to_state.state }}
         sequence:
-          - service: light.turn_off
-            target:
+          - target:
               entity_id: light.restaurant_spotlights
             data: {}
+            action: light.turn_off
       - conditions:
           - condition: template
             value_template: |
               {{ '打开餐厅布帘' in trigger.to_state.state }}
         sequence:
-          - service: switch.turn_off
-            target:
+          - target:
               entity_id: switch.restaurant_curtain
             data: {}
+            action: switch.turn_off
       - conditions:
           - condition: template
             value_template: |
               {{ '关闭餐厅布帘' in trigger.to_state.state }}
         sequence:
-          - service: switch.turn_on
-            target:
+          - target:
               entity_id: switch.restaurant_curtain
             data: {}
+            action: switch.turn_on
       - conditions:
           - condition: template
             value_template: |
               {{ '打开餐厅纱帘' in trigger.to_state.state }}
         sequence:
-          - service: switch.turn_off
-            target:
+          - target:
               entity_id: switch.restaurant_gauze_curtain
             data: {}
+            action: switch.turn_off
       - conditions:
           - condition: template
             value_template: |
               {{ '打开餐厅窗纱' in trigger.to_state.state }}
         sequence:
-          - service: switch.turn_off
-            target:
+          - target:
               entity_id: switch.restaurant_gauze_curtain
             data: {}
+            action: switch.turn_off
       - conditions:
           - condition: template
             value_template: |
               {{ '关闭餐厅纱帘' in trigger.to_state.state }}
         sequence:
-          - service: switch.turn_on
-            target:
+          - target:
               entity_id: switch.restaurant_gauze_curtain
             data: {}
+            action: switch.turn_on
       - conditions:
           - condition: template
             value_template: |
               {{ '关闭餐厅窗纱' in trigger.to_state.state }}
         sequence:
-          - service: switch.turn_on
-            target:
+          - target:
               entity_id: switch.restaurant_gauze_curtain
             data: {}
+            action: switch.turn_on
       - conditions:
           - condition: template
             value_template: |
               {{ '打开客厅灯带' in trigger.to_state.state }}
         sequence:
-          - service: light.turn_on
-            target:
+          - target:
               entity_id: light.living_room_ceiling_light_strip
             data: {}
+            action: light.turn_on
       - conditions:
           - condition: template
             value_template: |
               {{ '关闭客厅灯带' in trigger.to_state.state }}
         sequence:
-          - service: light.turn_off
-            target:
+          - target:
               entity_id: light.living_room_ceiling_light_strip
             data: {}
+            action: light.turn_off
       - conditions:
           - condition: template
             value_template: |
               {{ '打开客厅中间筒灯' in trigger.to_state.state }}
         sequence:
-          - service: light.turn_on
-            target:
+          - target:
               entity_id: light.living_room_center_spotlight
             data: {}
+            action: light.turn_on
       - conditions:
           - condition: template
             value_template: |
               {{ '关闭客厅中间筒灯' in trigger.to_state.state }}
         sequence:
-          - service: light.turn_off
-            target:
+          - target:
               entity_id: light.living_room_center_spotlight
             data: {}
+            action: light.turn_off
       - conditions:
           - condition: template
             value_template: |
               {{ '打开客厅筒灯' in trigger.to_state.state }}
         sequence:
-          - service: light.turn_on
-            target:
+          - target:
               entity_id: light.living_room_downlight
             data: {}
+            action: light.turn_on
       - conditions:
           - condition: template
             value_template: |
               {{ '关闭客厅筒灯' in trigger.to_state.state }}
         sequence:
-          - service: light.turn_off
-            target:
+          - target:
               entity_id: light.living_room_downlight
             data: {}
+            action: light.turn_off
       - conditions:
           - condition: template
             value_template: |
               {{ '打开客厅主灯' in trigger.to_state.state }}
         sequence:
-          - service: light.turn_on
-            target:
+          - target:
               entity_id: light.living_room_main_light
             data: {}
+            action: light.turn_on
       - conditions:
           - condition: template
             value_template: |
               {{ '关闭客厅主灯' in trigger.to_state.state }}
         sequence:
-          - service: light.turn_off
-            target:
+          - target:
               entity_id: light.living_room_main_light
             data: {}
+            action: light.turn_off
       - conditions:
           - condition: template
             value_template: |
               {{ '打开电视墙灯带' in trigger.to_state.state }}
         sequence:
-          - service: light.turn_on
-            target:
+          - target:
               entity_id: light.tv_background_light_strip
             data: {}
+            action: light.turn_on
       - conditions:
           - condition: template
             value_template: |
               {{ '关闭电视墙灯带' in trigger.to_state.state }}
         sequence:
-          - service: light.turn_off
-            target:
+          - target:
               entity_id: light.tv_background_light_strip
             data: {}
+            action: light.turn_off
       - conditions:
           - condition: template
             value_template: |
               {{ '打开客厅布帘' in trigger.to_state.state }}
         sequence:
-          - service: switch.turn_off
-            target:
+          - target:
               entity_id: switch.living_room_curtains
             data: {}
+            action: switch.turn_off
       - conditions:
           - condition: template
             value_template: |
               {{ '关闭客厅布帘' in trigger.to_state.state }}
         sequence:
-          - service: switch.turn_on
-            target:
+          - target:
               entity_id: switch.living_room_curtains
             data: {}
+            action: switch.turn_on
       - conditions:
           - condition: template
             value_template: |
               {{ '打开客厅纱帘' in trigger.to_state.state }}
         sequence:
-          - service: switch.turn_off
-            target:
+          - target:
               entity_id: switch.living_room_gauze_curtain
             data: {}
+            action: switch.turn_off
       - conditions:
           - condition: template
             value_template: |
               {{ '关闭客厅纱帘' in trigger.to_state.state }}
         sequence:
-          - service: switch.turn_on
-            target:
+          - target:
               entity_id: switch.living_room_gauze_curtain
             data: {}
+            action: switch.turn_on
       - conditions:
           - condition: template
             value_template: |
               {{ '打开客厅窗纱' in trigger.to_state.state }}
         sequence:
-          - service: switch.turn_off
-            target:
+          - target:
               entity_id: switch.living_room_gauze_curtain
             data: {}
+            action: switch.turn_off
       - conditions:
           - condition: template
             value_template: |
               {{ '关闭客厅窗纱' in trigger.to_state.state }}
         sequence:
-          - service: switch.turn_on
-            target:
+          - target:
               entity_id: switch.living_room_gauze_curtain
             data: {}
-      - conditions:
-          - condition: template
-            value_template: "{{ '关闭布帘' in trigger.to_state.state }}"
-        sequence:
-          - service: switch.turn_on
-            data: {}
-            target:
-              entity_id: switch.living_room_curtains
-          - service: switch.turn_on
-            data: {}
-            target:
-              entity_id: switch.restaurant_curtain
-      - conditions:
-          - condition: template
-            value_template: "{{ '打开布帘' in trigger.to_state.state }}"
-        sequence:
-          - service: switch.turn_off
-            data: {}
-            target:
-              entity_id: switch.living_room_curtains
-          - service: switch.turn_off
-            data: {}
-            target:
-              entity_id: switch.restaurant_curtain
+            action: switch.turn_on
       - conditions:
           - condition: template
             value_template: "{{ '观影模式' == trigger.to_state.state }}"
         sequence:
-          - service: scene.turn_on
-            data: {}
+          - data: {}
             target:
               entity_id: scene.guan_ying
+            action: scene.turn_on
       - conditions:
           - condition: template
             value_template: "{{ '结束观影' == trigger.to_state.state }}"
         sequence:
-          - service: scene.turn_on
-            data: {}
+          - data: {}
             target:
               entity_id: scene.jie_shu_guan_ying
+            action: scene.turn_on
       - conditions:
           - condition: template
             value_template: "{{ '看电视' in trigger.to_state.state }}"
         sequence:
-          - service: scene.turn_on
-            data: {}
+          - data: {}
             target:
               entity_id: scene.kan_dian_shi
+            action: scene.turn_on
       - conditions:
           - condition: template
             value_template: "{{ '用餐' in trigger.to_state.state }}"
         sequence:
-          - service: scene.turn_on
-            data: {}
+          - data: {}
             target:
               entity_id: scene.yong_can
+            action: scene.turn_on
       - conditions:
           - condition: template
             value_template: "{{ '备餐' in trigger.to_state.state }}"
         sequence:
-          - service: scene.turn_on
-            data: {}
+          - data: {}
             target:
               entity_id: scene.bei_can
+            action: scene.turn_on
       - conditions:
           - condition: template
             value_template: "{{ '厨房' in trigger.to_state.state }}"
         sequence:
-          - service: scene.turn_on
-            data: {}
+          - data: {}
             target:
               entity_id: scene.bei_can
+            action: scene.turn_on
       - conditions:
           - condition: template
             value_template: "{{ '工作' in trigger.to_state.state }}"
         sequence:
-          - service: scene.turn_on
-            data: {}
+          - data: {}
             target:
               entity_id: scene.can_ting_gong_zuo
-      - conditions:
-          - condition: template
-            value_template: "{{ '会客模式' in trigger.to_state.state }}"
-        sequence:
-          - service: scene.turn_on
-            data: {}
-            target:
-              entity_id: scene.hui_ke
+            action: scene.turn_on
       - conditions:
           - condition: template
             value_template: "{{ '晚安' in trigger.to_state.state }}"
         sequence:
-          - service: scene.turn_on
-            data: {}
+          - data: {}
             target:
               entity_id: scene.ke_ting_wan_an
-          - service: script.1698163602021
-            data: {}
+            action: scene.turn_on
+          - data: {}
+            action: script.1698163602021
       - conditions:
           - condition: template
             value_template: "{{ '关闭纱帘' in trigger.to_state.state }}"
@@ -404,12 +372,12 @@ action:
           - if:
               - condition: state
                 entity_id: switch.living_room_gauze_curtain
-                state: "on"
+                state: "off"
             then:
-              - service: scene.turn_on
-                data: {}
+              - data: {}
                 target:
                   entity_id: scene.guan_bi_ke_can_ting_sha_lian
+                action: scene.turn_on
       - conditions:
           - condition: template
             value_template: "{{ '打开纱帘' in trigger.to_state.state }}"
@@ -417,17 +385,69 @@ action:
           - if:
               - condition: state
                 entity_id: switch.living_room_gauze_curtain
-                state: "off"
+                state: "on"
             then:
-              - service: scene.turn_on
-                data: {}
+              - data: {}
                 target:
                   entity_id: scene.da_kai_ke_can_ting_sha_lian
+                action: scene.turn_on
+      - conditions:
+          - condition: template
+            value_template: "{{ '会客模式' in trigger.to_state.state }}"
+        sequence:
+          - data: {}
+            target:
+              entity_id: scene.hui_ke
+            action: scene.turn_on
+      - conditions:
+          - condition: template
+            value_template: "{{ '关闭会客模式' in trigger.to_state.state }}"
+        sequence:
+          - data: {}
+            target:
+              entity_id: scene.hui_ke
+            action: scene.turn_on
+      - conditions:
+          - condition: template
+            value_template: "{{ '关闭布帘' in trigger.to_state.state }}"
+        sequence:
+          - if:
+              - condition: state
+                entity_id: switch.living_room_curtains
+                state: "off"
+            then:
+              - data: {}
+                target:
+                  entity_id: switch.restaurant_curtain
+                action: switch.turn_on
+              - data: {}
+                target:
+                  entity_id: switch.living_room_curtains
+                action: switch.turn_on
+      - conditions:
+          - condition: template
+            value_template: "{{ '打开布帘' in trigger.to_state.state }}"
+        sequence:
+          - if:
+              - condition: state
+                entity_id: switch.living_room_curtains
+                state: "on"
+            then:
+              - action: switch.turn_off
+                target:
+                  entity_id:
+                    - switch.restaurant_curtain
+                data: {}
+              - action: switch.turn_off
+                target:
+                  entity_id:
+                    - switch.living_room_curtains
+                data: {}
     default: []
-  - service: system_log.write
-    data:
+  - data:
       level: info
       logger: custom_components.xiaomi_miot.xiaoai
       message: |
         {{ trigger.entity_id }}: {{ trigger.to_state.state }}
+    action: system_log.write
 mode: single
